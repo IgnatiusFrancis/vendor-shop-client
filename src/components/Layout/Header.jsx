@@ -12,8 +12,13 @@ import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
+import { useSelector } from "react-redux";
+import { backend_url } from "../../server";
 
 const Header = ({ activeHeading }) => {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  console.log(user);
+
   const [searchData, setSearchData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [active, setActive] = useState(false);
@@ -29,6 +34,7 @@ const Header = ({ activeHeading }) => {
 
     setSearchData(filteredProducts);
   };
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
       setActive(true);
@@ -101,7 +107,10 @@ const Header = ({ activeHeading }) => {
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
         >
           {/* CATEGORIES */}
-          <div className="relative h-[60px] mt-[10px] w-[270px]  1000px: block">
+          <div
+            onClick={() => setDropdown(!dropdown)}
+            className="relative h-[60px] mt-[10px] w-[270px]  1000px: block"
+          >
             <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
             <button
               className={`h-[100%] w-full flex justify-betwwen items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
@@ -111,7 +120,6 @@ const Header = ({ activeHeading }) => {
             <IoIosArrowDown
               size={20}
               className="absolute right-2 top-4 cursor-pointer"
-              onClick={() => setDropdown(!dropdown)}
             />
             {dropdown ? (
               <DropDown
@@ -128,7 +136,7 @@ const Header = ({ activeHeading }) => {
             <div className={`${styles.noramlFlex}`}>
               <div className="relative cursor-pointer mr-[15px]">
                 <AiOutlineHeart size={30} color="rgb(255 255 255/ 83%)" />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   0
                 </span>
               </div>
@@ -146,9 +154,19 @@ const Header = ({ activeHeading }) => {
             </div>
             <div className={`${styles.noramlFlex}`}>
               <div className="relative cursor-pointer mr-[15px]">
-                <Link to="/login">
-                  <CgProfile size={30} color="rgb(255 255 255/ 83%)" />
-                </Link>
+                {isAuthenticated ? (
+                  <Link to="/profile">
+                    <img
+                      src={`${backend_url}uploads/${user.avatar}`}
+                      alt=""
+                      className="w-[35px] h-[35px] rounded-full"
+                    />
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <CgProfile size={30} color="rgb(255 255 255/ 83%)" />
+                  </Link>
+                )}
               </div>
             </div>
           </div>

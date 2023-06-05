@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { backend_url } from "../../../server";
 import styles from "../../../styles/styles";
 // import { useDispatch, useSelector } from "react-redux";
-// import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
+import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 // import {
 //   addToWishlist,
 //   removeFromWishlist,
@@ -36,15 +36,15 @@ const ProductCard = ({ data, isEvent }) => {
   //     }
   //   }, [wishlist]);
 
-  //   const removeFromWishlistHandler = (data) => {
-  //     setClick(!click);
-  //     // dispatch(removeFromWishlist(data));
-  //   };
+  const removeFromWishlistHandler = (data) => {
+    setClick(!click);
+    // dispatch(removeFromWishlist(data));
+  };
 
-  //   const addToWishlistHandler = (data) => {
-  //     setClick(!click);
-  //     // dispatch(addToWishlist(data));
-  //   };
+  const addToWishlistHandler = (data) => {
+    setClick(!click);
+    // dispatch(addToWishlist(data));
+  };
 
   //   const addToCartHandler = (id) => {
   //     const isItemExists = cart && cart.find((i) => i._id === id);
@@ -83,22 +83,21 @@ const ProductCard = ({ data, isEvent }) => {
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </h4>
 
-          <div className="flex">{/* <Ratings rating={data?.ratings} /> */}</div>
+          <div className="flex">
+            <Ratings rating={data?.ratings} />
+          </div>
 
           <div className="py-2 flex items-center justify-between">
             <div className="flex">
               <h5 className={`${styles.productDiscountPrice}`}>
-                {data.originalPrice === 0
-                  ? data.originalPrice
-                  : data.discountPrice}
-                $
+                {data.price === 0 ? data.price : data.discount_price}$
               </h5>
               <h4 className={`${styles.price}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
+                {data.price ? data.price + " $" : null}
               </h4>
             </div>
             <span className="font-[400] text-[17px] text-[#68d284]">
-              {data?.sold_out} sold
+              {data?.total_sell} sold
             </span>
           </div>
         </Link>
@@ -109,7 +108,7 @@ const ProductCard = ({ data, isEvent }) => {
             <AiFillHeart
               size={22}
               className="cursor-pointer absolute right-2 top-5"
-              //   onClick={() => removeFromWishlistHandler(data)}
+              onClick={() => removeFromWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Remove from wishlist"
             />
@@ -117,7 +116,7 @@ const ProductCard = ({ data, isEvent }) => {
             <AiOutlineHeart
               size={22}
               className="cursor-pointer absolute right-2 top-5"
-              //   onClick={() => addToWishlistHandler(data)}
+              onClick={() => addToWishlistHandler(data)}
               color={click ? "red" : "#333"}
               title="Add to wishlist"
             />
@@ -125,7 +124,7 @@ const ProductCard = ({ data, isEvent }) => {
           <AiOutlineEye
             size={22}
             className="cursor-pointer absolute right-2 top-14"
-            // onClick={() => setOpen(!open)}
+            onClick={() => setOpen(!open)}
             color="#333"
             title="Quick view"
           />
@@ -136,7 +135,7 @@ const ProductCard = ({ data, isEvent }) => {
             color="#444"
             title="Add to cart"
           />
-          {/* {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null} */}
+          {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
     </>

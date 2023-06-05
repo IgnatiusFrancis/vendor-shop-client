@@ -6,6 +6,7 @@ import { server } from "../server";
 
 const ActivationPage = () => {
   const { activation_token } = useParams();
+
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,6 @@ const ActivationPage = () => {
                 // navigate("/");
                 toast.success(response.data.message);
               }
-              console.log(response);
             })
             .catch((error) => {
               setError(true);
@@ -34,8 +34,8 @@ const ActivationPage = () => {
       };
       activationEmail();
     }
-  }, [activation_token, setError]);
-  console.log(error);
+  }, [activation_token]);
+
   return (
     <div
       style={{

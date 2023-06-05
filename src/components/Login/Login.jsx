@@ -23,6 +23,7 @@ const Login = () => {
       })
       .then((response) => {
         navigate("/");
+        window.location.reload();
         toast.success(response.data.message);
         setEmail("");
         setPassword("");
@@ -31,7 +32,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data.message);
       });
   };
 
