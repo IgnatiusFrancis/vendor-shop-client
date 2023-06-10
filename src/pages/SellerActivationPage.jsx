@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { server } from "../server";
 
-const ActivationPage = () => {
+const SellerActivationPage = () => {
   const { activation_token } = useParams();
 
   const [error, setError] = useState(false);
@@ -55,4 +55,4 @@ const ActivationPage = () => {
   );
 };
 
-export default ActivationPage;
+export default SellerActivationPage;

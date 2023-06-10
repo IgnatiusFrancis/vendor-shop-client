@@ -45,72 +45,72 @@ const ProfileContent = ({ active }) => {
           <br />
           <div className="w-full px-5">
             <form onSubmit={handleSubmit}>
-              <div className="w-full flex pb-3">
-                <div className="w-[50%]">
+              <div className="w-full 800px:flex block pb-3">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Full Name
                   </label>
                   <input
                     type="text"
-                    className={`${styles.input} !w-[95%]`}
+                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div className="w-[50%]">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Email Address
                   </label>
                   <input
                     type="text"
-                    className={`${styles.input} !w-[95%]`}
+                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
-              <div className="w-full flex pb-3">
-                <div className="w-[50%]">
+              <div className="w-full 800px:flex block pb-3">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Phone Number
                   </label>
                   <input
                     type="number"
-                    className={`${styles.input} !w-[95%]`}
+                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                     required
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
-                <div className="w-[50%]">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Zip Code
                   </label>
                   <input
                     type="number"
-                    className={`${styles.input} !w-[95%]`}
+                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                     required
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}
                   />
                 </div>
               </div>
-              <div className="w-full flex pb-3">
-                <div className="w-[50%]">
+              <div className="w-full 800px:flex block pb-3">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Address 1
                   </label>
                   <input
                     type="number"
-                    className={`${styles.input} !w-[95%]`}
+                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                     required
                     value={address1}
                     onChange={(e) => setAddress1(e.target.value)}
                   />
                 </div>
-                <div className="w-[50%]">
+                <div className="w-[100%] 800px:w-[50%]">
                   <label htmlFor="" className="block pb-2">
                     Address 2
                   </label>
@@ -192,7 +192,7 @@ const AllOrders = () => {
   ];
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID", minWidth: 158, flex: 0.7 },
     {
       field: "status",
       headerName: "status",
@@ -457,7 +457,7 @@ const PaymentMethod = () => {
           />
           <h5 className="pl-5 font-[600]">Ignatius Francis</h5>
         </div>
-        <div className="pt-8 flex items-center">
+        <div className="pl-8 flex items-center">
           <h6>1234 *** *** ****</h6>
           <h5 className="pl-6">08/2023</h5>
         </div>
@@ -485,10 +485,10 @@ const Address = () => {
         <div className="flex items-center">
           <h5 className="pl-5 font-[600]">Jebs </h5>
         </div>
-        <div className="pt-8 flex items-center">
+        <div className="pl-8 flex items-center">
           <h6>1234 EPats, New Zealand, Nigeria</h6>
         </div>
-        <div className="pt-8 flex items-center">
+        <div className="pl-8 flex items-center">
           <h6>(1234) 253-173</h6>
         </div>
         <div className="min-w-[10%] flex items-center justify-between pl-8">
