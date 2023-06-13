@@ -22,7 +22,7 @@ const ShopLogin = () => {
         password,
       })
       .then((response) => {
-        // navigate("/");
+        navigate("/dashboard");
         window.location.reload();
         toast.success(response.data.message);
         setEmail("");

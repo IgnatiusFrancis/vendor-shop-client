@@ -33,7 +33,7 @@ const ShopCreate = () => {
     form.append("avatar", avatar);
 
     axios
-      .post(`${server}/shop/create-shop`, form)
+      .post(`${server}/seller/create-shop`, form)
       .then((response) => {
         console.log(response.data);
         if (response.data.success === true) {
