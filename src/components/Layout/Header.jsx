@@ -34,9 +34,11 @@ const Header = ({ activeHeading }) => {
     setSearchTerm(term);
 
     const filteredProducts = productData.filter((product) => {
-      return product.name.toLowerCase().includes(term.toLowerCase());
+      return product.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
+    console.log(term.length);
+    console.log(searchTerm.length);
     if (term.length !== 0) {
       setSearchData(filteredProducts);
     } else {

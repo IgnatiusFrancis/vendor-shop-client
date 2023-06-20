@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import DashboardHeader from "../../components/Shop/Layout/DashboardHeader";
 import DashboardSideBar from "../../components/Shop/Layout/DashboardSideBar";
-import CreateProduct from "../../components/Shop/CreateProduct";
+import AllProducts from "../../components/Shop/AllProducts";
 
-const ShopCreateProduct = () => {
-  // const [active, setActive] = useState(1);
+const ShopAllProducts = () => {
   return (
     <div>
       <DashboardHeader />
-      <div className="flex items-center justify-between w-full">
+      <div className="flex justify-between w-full">
         <div className="w-[80px] 800px:w-[330px]">
-          <DashboardSideBar active={4} />
+          <DashboardSideBar active={3} />
         </div>
         <div className="w-full justify-center flex">
-          <CreateProduct />
+          <AllProducts />
         </div>
       </div>
     </div>
   );
 };
 
-export default ShopCreateProduct;
+export default ShopAllProducts;

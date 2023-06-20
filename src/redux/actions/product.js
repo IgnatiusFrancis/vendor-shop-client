@@ -22,3 +22,41 @@ export const createProduct = (newForm) => async (dispatch) => {
     });
   }
 };
+
+// GET ALL PRODUCTS
+
+export const getALlProducts = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "getAllProductsShopRequest" });
+
+    const { data } = await axios.get(
+      `${server}/product/get-all-products/${id}`
+    );
+
+    dispatch({ type: "getAllProductsShopSuccess", payload: data?.products });
+  } catch (error) {
+    dispatch({
+      type: "getAllProductsShopError",
+      payload: error.response?.data?.message,
+    });
+  }
+};
+
+// GET ALL PRODUCTS
+
+export const deleteProducts = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "deleteProductRequest" });
+
+    const { data } = await axios.get(
+      `${server}/product/delete-shop-product/${id}`
+    );
+
+    dispatch({ type: "deleteProductSuccess", payload: data?.success });
+  } catch (error) {
+    dispatch({
+      type: "deleteProductFailed",
+      payload: error.response?.data?.message,
+    });
+  }
+};

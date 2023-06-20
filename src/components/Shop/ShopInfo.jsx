@@ -1,12 +1,37 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { backend_url } from "../../server";
+import { backend_url, server } from "../../server";
 import styles from "../../styles/styles";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const ShopInfo = ({ isOwner }) => {
   const { seller } = useSelector((state) => state.seller);
+  const navigate = useNavigate();
 
-  const logoutHandler = () => {};
+  const logoutHandler = async () => {
+    try {
+      Cookies.remove("Token");
+      toast.success("LogOut Successfully");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Error Login Out");
+    }
+
+    // await axios
+    //   .get(`${server}/seller/logout`, { withCredentials: true })
+    //   .then((res) => {
+    //     toast.success(res.data?.message);
+    //     // window.location.reload();
+    //     navigate("/login");
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.response?.data.message);
+    //   });
+  };
+
   return (
     <div>
       <div className="w-full py-5">
