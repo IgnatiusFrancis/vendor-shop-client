@@ -23,6 +23,8 @@ import {
   ShopCreateProduct,
   ShopAllProducts,
   ShopCreateEvents,
+  ShopAllEvents,
+  ShopAllCoupouns,
 } from "./Routes/ShopRoutes.js";
 import "./App.css";
 import store from "./redux/store.js";
@@ -114,8 +116,24 @@ const App = () => {
           }
         />
         <Route
+          path="/dashboard-events"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllEvents />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
           path="/seller/activation/:activation_token"
           element={<SellerActivationPage />}
+        />
+        <Route
+          path="/dashboard-coupouns"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllCoupouns />
+            </SellerProtectedRoute>
+          }
         />
       </Routes>
     </BrowserRouter>

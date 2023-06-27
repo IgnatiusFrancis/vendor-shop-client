@@ -2,16 +2,22 @@ import axios from "axios";
 import { server } from "../../server";
 import Cookies from "js-cookie";
 
+const token = Cookies.get("Token");
+
 export const createProduct = (newForm) => async (dispatch) => {
   try {
     dispatch({ type: "LoadProductRequest" });
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    // const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.post(
       `${server}/product/create-product`,
       newForm,
-      config
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     dispatch({ type: "LoadProductSuccess", payload: data?.product });
@@ -30,7 +36,12 @@ export const getALlProducts = (id) => async (dispatch) => {
     dispatch({ type: "getAllProductsShopRequest" });
 
     const { data } = await axios.get(
-      `${server}/product/get-all-products/${id}`
+      `${server}/product/get-all-products/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     dispatch({ type: "getAllProductsShopSuccess", payload: data?.products });
@@ -48,7 +59,7 @@ export const deleteProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: "deleteProductRequest" });
 
-    const { data } = await axios.get(
+    const { data } = await axios.delete(
       `${server}/product/delete-shop-product/${id}`
     );
 
